@@ -1,0 +1,74 @@
+from cs1graphics import *
+from time import sleep
+
+paper = Canvas()
+
+paper.setBackgroundColor('aquamarine')
+paper.setWidth(600)
+paper.setHeight(600)
+paper.setTitle('My animal')
+
+
+fish = Layer()
+
+body = Ellipse(120,80, Point(290,400))
+body.setFillColor('gold')
+fish.add(body)
+
+eye = Circle(7, Point(260,400))
+eye.setFillColor('white')
+fish.add(eye)
+
+eyeball = Circle(3,Point(260,400))
+eyeball.setFillColor('black')
+fish.add(eyeball)
+
+fin1 = Polygon(Point(255,360), Point(225,340),Point(235,343),Point(245,340),Point(255,343),Point(265,340),Point(275,343),Point(285,340),Point(295,343),Point(305,340),Point(315,343),Point(325,340),Point(335,343),Point(345,340),Point(355,343),Point(365,340),Point(325,360))
+fin1.setFillColor('red')
+fish.add(fin1)
+
+fin2 = Polygon(Point(255,440), Point(225,460),Point(235,457),Point(245,460),Point(255,457),Point(265,460),Point(275,457),Point(285,460),Point(295,457),Point(305,460),Point(315,457),Point(325,460),Point(335,457),Point(345,460),Point(355,457),Point(365,460),Point(325,440))
+fin2.setFillColor('red')
+fish.add(fin2)
+
+tail = Layer()
+
+
+tailpart = Polygon(Point(352,410),Point(427,460),Point(427,340),Point(352,390))
+tail2 = tailpart.clone()
+tail2.setFillColor('greenyellow')
+tail2.rotate(20)
+tail2.setDepth(40)
+tail2.setBorderWidth(1)
+
+tailpart.setFillColor('greenyellow')
+
+wave=Layer()
+
+wavepart=Polygon(Point(100,200),Point(120,180),Point(140,200),Point(160,180),Point(180,200),Point(200,180),Point(220,200),Point(240,180),Point(260,200))
+wavepart.setFillColor('blue')
+wave.add(wavepart)
+
+tail.add(tailpart)
+tail.add(tail2)
+
+paper.add(fish)
+paper.add(tail)
+paper.add(wave)
+
+timeDelay1 = 1
+timeDelay2 = 2
+sleep(timeDelay1)
+
+for i in range (10):
+    fish.move(-20, 0)
+    tail.move(-20,0)
+    sleep(timeDelay1)
+    wave.move(50,-10)
+
+    tail2 = tailpart.clone()
+    tail.adjustReference(-20,0)
+    tail.rotate(1)
+    sleep(timeDelay1)
+    tail.rotate(-1)
+    wave.move(50,10)

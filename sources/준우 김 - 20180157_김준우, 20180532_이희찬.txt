@@ -1,0 +1,37 @@
+from cs1graphics import *
+from time import sleep
+background = Canvas(300, 200, 'skyBlue', 'My World')
+paper=Layer()
+tail=0
+def draw_animal():
+    global tail
+    head = Square(40, Point(80,50))
+    head.setFillColor('black')
+    paper.add(head)
+    body=Rectangle(80,40,Point(120,70))
+    body.setFillColor('black')
+    paper.add(body)
+    leg1=Rectangle(10,40,Point(90,110))
+    leg1.setFillColor('black')
+    paper.add(leg1)
+    leg2=Rectangle(10,40,Point(150,110))
+    leg2.setFillColor('black')
+    paper.add(leg2)
+    tail=Rectangle(40,10,Point(170,70))
+    tail.setFillColor('black')
+    paper.add(tail)
+    background.add(paper)
+    paper.move(100,0)
+count=0
+def show_animation():
+    while True:
+        global count, tail
+        paper.move(-1,0)
+        count+=1
+        if count%40<20:
+            tail.rotate(1)
+        elif count%40>=20:
+            tail.rotate(-1)
+        sleep(0.05)
+draw_animal()
+show_animation()

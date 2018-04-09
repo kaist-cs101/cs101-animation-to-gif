@@ -1,0 +1,132 @@
+from cs1graphics import *
+from time import sleep
+import math
+
+paper=Canvas()
+paper.setBackgroundColor('light blue')
+paper.setWidth(1000)
+paper.setHeight(800)
+paper.setTitle('My World')
+
+horizon=Circle(1600,Point(500,2000))
+horizon.setFillColor('green')
+paper.add(horizon)
+
+solution=Circle(100,Point(0,800))
+solution.setFillColor('yellow')
+paper.add(solution)
+w=paper.getWidth()
+h=paper.getHeight()
+r=solution.getRadius()
+x0=w/2.0
+y0=h+r
+xradius=w/2-r
+yradius=h
+for angle in range(181):
+    rad=(angle/180.0)*math.pi
+    x=x0-xradius*math.cos(rad)
+    y=y0-yradius*math.sin(rad)
+    solution.moveTo(x,y)
+
+paper.setBackgroundColor('black')
+
+sleep(0.3)
+moon=Circle(130,Point(650,130))
+moon.setFillColor('yellow')
+paper.add(moon)
+
+shade=Circle(200,Point(500,100))
+shade.setFillColor('black')
+paper.add(shade)
+
+star1=Circle(20,Point(300,100))
+star1.setFillColor('aquamarine')
+paper.add(star1)
+
+star2=Circle(20,Point(500,200))
+star2.setFillColor('black')
+paper.add(star2)
+
+star3=Circle(20,Point(600,150))
+star3.setFillColor('aquamarine')
+paper.add(star3)
+
+bear=Layer()
+bearhead=Circle(80,Point(100,350))
+bearhead.setFillColor('beige')
+bearhead.setBorderColor('beige')
+bearhead.setDepth(30)
+bear.add(bearhead)
+
+bearbody=Ellipse(160,250,Point(100,480))
+bearbody.setFillColor('beige')
+bearbody.setBorderColor('beige')
+bearbody.setDepth(25)
+bear.add(bearbody)
+
+beararm1=Rectangle(80,40,Point(210,450))
+beararm1.setFillColor('brown')
+beararm1.setDepth(30)
+bear.add(beararm1)
+#ÆÈ È¸Àü
+beararm1.rotate(0)
+
+beararm2=Rectangle(80,40,Point(20,450))
+beararm2.setFillColor('brown')
+beararm2.setDepth(30)
+bear.add(beararm2)
+#ÆÈ È¸Àü
+beararm2.rotate(135)
+
+beararm3=Rectangle(80,40,Point(50,600))
+beararm3.setFillColor('brown')
+beararm3.setDepth(0)
+bear.add(beararm3)
+#ÆÈ È¸Àü
+beararm3.rotate(105)
+
+
+beararm4=Rectangle(80,40,Point(145,600))
+beararm4.setFillColor('brown')
+beararm4.setDepth(0)
+bear.add(beararm4)
+beararm4.rotate(75)
+
+beareye1=Circle(10,Point(75,320))
+beareye1.setFillColor('black')
+beareye1.setBorderColor('black')
+beareye1.setDepth(0)
+bear.add(beareye1)
+
+beareye2=Circle(10,Point(140,320))
+beareye2.setFillColor('black')
+beareye2.setBorderColor('black')
+beareye2.setDepth(0)
+bear.add(beareye2)
+
+bearear=Circle(25,Point(55,270))
+bearear.setFillColor('beige')
+bearear.setBorderColor('beige')
+bearear.setDepth(10)
+bear.add(bearear)
+
+bearear=Circle(25,Point(155,270))
+bearear.setFillColor('beige')
+bearear.setBorderColor('beige')
+bearear.setDepth(10)
+bear.add(bearear)
+
+paper.add(bear)
+beararm1.adjustReference(-40,-30)
+for i in range(30):
+    beararm1.rotate((-1)**i*50)
+    i=i+1
+    sleep(0.5)
+    star1.setFillColor('black')
+    star2.setFillColor('aquamarine')
+    star3.setFillColor('black')
+    bear.move(50,0)
+    sleep(0.5)
+    star1.setFillColor('aquamarine')
+    star2.setFillColor('black')
+    star3.setFillColor('aquamarine')
