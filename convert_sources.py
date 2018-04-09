@@ -23,6 +23,8 @@ def get_suffix():
 def main():
     filenames = os.listdir('./sources')
     for filename in filenames:
+        if not filename.endswith('.py'):
+            continue
         student_ids = re.findall(r'[0-9]{8}', filename)
         new_filename = 'src_%s.py' % ('_'.join(student_ids))
 

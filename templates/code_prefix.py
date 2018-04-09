@@ -8,6 +8,7 @@ _GIF_LENGTH_LIMIT = 10 # Result GIF file's length limit in seconds
 _filename_base = sys.argv[0].replace('converted/', '')
 _timer = 0
 _count = 0
+print('Converting %s to GIF.' % _filename_base)
 def canvas_save():
     global _filename_base
     global _timer
